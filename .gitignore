@@ -1,0 +1,17 @@
+# Секреты и база
+.env
+database.db
+*.db
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Логи и IDE
+*.log
+.vscode/
+.idea/
+.DS_Store
