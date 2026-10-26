@@ -17,9 +17,14 @@ load_dotenv()
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 ENCRYPTION_KEY = os.getenv("ENCRYPTION_KEY")
 
+if not BOT_TOKEN or not ENCRYPTION_KEY:
+    raise SystemExit("Заполните BOT_TOKEN и ENCRYPTION_KEY в .env (см. раздел «Запуск» в README).")
+try:
+    cipher_suite = Fernet(ENCRYPTION_KEY.encode())
+except ValueError:
+    raise SystemExit("Неверный ENCRYPTION_KEY в .env. Сгенерируйте ключ командой из README.")
 bot = Bot(token=BOT_TOKEN)
 dp = Dispatcher()
-cipher_suite = Fernet(ENCRYPTION_KEY.encode())
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DB_PATH = os.path.join(BASE_DIR, "database.db")
