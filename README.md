@@ -77,9 +77,12 @@ cd mesh-impulse-bot
 # 2. Установить зависимости
 pip install -r requirements.txt
 
-# 3. Создать .env по образцу и вписать токен бота
+# 3. Создать .env по образцу
 cp .env.example .env
-# затем открыть .env и указать BOT_TOKEN
+# затем открыть .env и указать:
+#   BOT_TOKEN      — токен бота от @BotFather
+#   ENCRYPTION_KEY — ключ шифрования, его выдаст команда:
+python -c "from cryptography.fernet import Fernet; print(Fernet.generate_key().decode())"
 
 # 4. Запустить
 python bot.py
